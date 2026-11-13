@@ -5,88 +5,6 @@
   padding: 0 40px;
 }
 
-.weather-card {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 80px;
-  min-height: 80px;
-  padding: 0 24px;
-  padding-right: 0;
-  overflow: hidden;
-  border-radius: 12px;
-  background-color: #7e9cd4;
-  color: #fff;
-}
-
-.weather-card__info {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-.weather-card__temperature {
-  margin: 0;
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.weather-card__description {
-  margin: 4px 0 0;
-  font-size: 16px;
-  text-transform: capitalize;
-}
-
-.weather-card__illustration {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  max-width: none;
-  object-fit: contain;
-}
-
-.weather-card__illustration--wide {
-  width: auto;
-  height: 80px;
-  max-width: none;
-  top: 0;
-  right: 0;
-  object-fit: contain;
-}
-
-.weather-card__cloudy-night {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 167.36px;
-  height: 98px;
-}
-
-.weather-card__moon {
-  position: absolute;
-  top: -20px;
-  right: 4px;
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  z-index: 1;
-}
-
-.weather-card__eclipse {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 167.36px;
-  height: 98px;
-  object-fit: contain;
-  object-position: bottom right;
-  z-index: 2;
-}
-
 .clothes-intro {
   margin: 40px 0 24px;
 }
@@ -107,28 +25,6 @@
     padding: 0 16px;
   }
 
-  .weather-card {
-    padding: 0 16px;
-  }
-
-  .weather-card__temperature {
-    font-size: 26px;
-  }
-
-  .weather-card__description {
-    font-size: 14px;
-  }
-
-  .weather-card__illustration {
-    right: 0;
-    max-width: 35%;
-  }
-
-  .weather-card__cloudy-night {
-    right: 0;
-    width: 120px;
-  }
-
   .clothes-section__title {
     font-size: 20px;
   }
@@ -136,11 +32,4 @@
   .clothes-section__subtitle {
     font-size: 16px;
   }
-}
-
-.weather-card__moon {
-  top: 18px;
-  right: 4px;
-  width: 60px;
-  height: 60px;
 }

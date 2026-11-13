@@ -1,6 +1,6 @@
 import { createElement, useState, Fragment } from "react";
-import { createPortal } from "react-dom";
 import "./ItemCard.css";
+import ItemModal from "./ItemModal";
 
 function ItemCard({ item, onDelete, onEdit }) {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -56,52 +56,10 @@ function ItemCard({ item, onDelete, onEdit }) {
       })
     ),
     isPreviewOpen
-      ? createPortal(
-          createElement(
-            "div",
-            {
-              className: "item-preview",
-              onClick: () => setIsPreviewOpen(false),
-            },
-            createElement(
-              "div",
-              {
-                className: "item-preview__content",
-                onClick: (event) => event.stopPropagation(),
-              },
-              createElement(
-                "button",
-                {
-                  className: "item-preview__close",
-                  type: "button",
-                  onClick: () => setIsPreviewOpen(false),
-                  "aria-label": "Close preview",
-                },
-                "×"
-              ),
-              createElement("img", {
-                className: "item-preview__image",
-                src: item.imageUrl,
-                alt: item.name,
-              }),
-              createElement(
-                "h2",
-                { className: "item-preview__name" },
-                item.name
-              ),
-              item.weatherCategory
-                ? createElement(
-                    "p",
-                    { className: "item-preview__category" },
-                    "Weather: " +
-                      item.weatherCategory.charAt(0).toUpperCase() +
-                      item.weatherCategory.slice(1)
-                  )
-                : null
-            )
-          ),
-          document.body
-        )
+      ? createElement(ItemModal, {
+          item,
+          onClose: () => setIsPreviewOpen(false),
+        })
       : null
   );
 }
