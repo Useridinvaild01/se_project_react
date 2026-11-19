@@ -1,51 +1,34 @@
-import { createElement } from "react";
 import "./Header.css";
 
-function Header({ onAddClick }) {
+function Header({ onAddClick, city }) {
   const currentDate = new Date().toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
   });
 
-  return createElement(
-    "header",
-    { className: "header" },
-    createElement(
-      "div",
-      { className: "header__logo-container" },
-      createElement("p", { className: "header__logo" }, "WTWR"),
-      createElement(
-        "p",
-        { className: "header__date-location" },
-        currentDate + ", Seattle"
-      )
-    ),
-    createElement(
-      "div",
-      { className: "header__actions" },
-      createElement(
-        "button",
-        {
-          className: "header__add-clothes",
-          onClick: onAddClick,
-        },
-        "+ Add clothes"
-      ),
-      createElement(
-        "div",
-        { className: "header__profile" },
-        createElement(
-          "p",
-          { className: "header__username" },
-          "David"
-        ),
-        createElement(
-          "span",
-          { className: "header__avatar" },
-          "D"
-        )
-      )
-    )
+  return (
+    <header className="header">
+      <div className="header__logo-container">
+        <p className="header__logo">WTWR</p>
+        <p className="header__date-location">
+          {currentDate}, {city || "Loading location..."}
+        </p>
+      </div>
+
+      <div className="header__actions">
+        <button
+          className="header__add-clothes"
+          onClick={onAddClick}
+        >
+          + Add clothes
+        </button>
+
+        <div className="header__profile">
+          <p className="header__username">David</p>
+          <span className="header__avatar">D</span>
+        </div>
+      </div>
+    </header>
   );
 }
 

@@ -1,6 +1,4 @@
-import { createElement } from "react";
 import "./WeatherCard.css";
-
 import sunny from "../assets/sunny.png";
 import moon from "../assets/Moon.png";
 import cloudy from "../assets/Cloudy.png";
@@ -38,57 +36,51 @@ function WeatherCard({ weather, error }) {
     illustration = isNight ? foggyNight : foggy;
   }
 
-  const weatherIllustration =
-    condition === "Clouds" && isNight
-      ? createElement(
-          "div",
-          { className: "weather-card__cloudy-night" },
-          createElement("img", {
-            className: "weather-card__moon",
-            src: moon,
-            alt: "",
-          }),
-          createElement("img", {
-            className: "weather-card__eclipse",
-            src: union,
-            alt: "Cloudy night",
-          })
-        )
-      : createElement("img", {
-          className:
-            condition === "Clear"
-              ? "weather-card__illustration"
-              : "weather-card__illustration weather-card__illustration--wide",
-          src: illustration,
-          alt: condition + (isNight ? " at night" : ""),
-        });
+  return (
+    <section className="weather-card">
+      <div className="weather-card__info">
+        {error ? (
+          <p>{error}</p>
+        ) : weather ? (
+          <div>
+            <h2 className="weather-card__temperature">
+              {Math.round(weather.temp)}°F
+            </h2>
+            <p className="weather-card__description">
+              {weather.weather[0].description}
+            </p>
+          </div>
+        ) : (
+          <p>Loading weather...</p>
+        )}
+      </div>
 
-  return createElement(
-    "section",
-    { className: "weather-card" },
-    createElement(
-      "div",
-      { className: "weather-card__info" },
-      error
-        ? createElement("p", null, error)
-        : weather
-          ? createElement(
-              "div",
-              null,
-              createElement(
-                "h2",
-                { className: "weather-card__temperature" },
-                Math.round(weather.main.temp) + "°F"
-              ),
-              createElement(
-                "p",
-                { className: "weather-card__description" },
-                weather.weather[0].description
-              )
-            )
-          : createElement("p", null, "Loading weather...")
-    ),
-    weather && weatherIllustration
+      {weather &&
+        (condition === "Clouds" && isNight ? (
+          <div className="weather-card__cloudy-night">
+            <img
+              className="weather-card__moon"
+              src={moon}
+              alt=""
+            />
+            <img
+              className="weather-card__eclipse"
+              src={union}
+              alt="Cloudy night"
+            />
+          </div>
+        ) : (
+          <img
+            className={
+              condition === "Clear"
+                ? "weather-card__illustration"
+                : "weather-card__illustration weather-card__illustration--wide"
+            }
+            src={illustration}
+            alt={condition + (isNight ? " at night" : "")}
+          />
+        ))}
+    </section>
   );
 }
 
