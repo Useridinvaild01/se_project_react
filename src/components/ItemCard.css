@@ -1,9 +1,11 @@
+
 .item-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  border: 1px solid #d9d9d9;
+  border: none;
   border-radius: 12px;
   background-color: #f3f3f3;
   transition: transform 0.2s ease;
@@ -15,13 +17,14 @@
 
 .item-card__header {
   display: flex;
-  width: calc(100% - 24px);
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
-  background-color: #fff;
-  border-radius: 4px;
+  gap: 8px;
+  width: calc(100% - 24px);
   margin: 12px 0 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
 }
 
 .item-card__name {
@@ -33,12 +36,25 @@
   font-weight: 600;
 }
 
+.item-card__image-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.item-card__image-button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: -2px;
+}
+
 .item-card__image {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  cursor: pointer;
 }
 
 .item-card__category {

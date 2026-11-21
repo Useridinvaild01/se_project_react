@@ -1,3 +1,4 @@
+
 import "./ItemCard.css";
 
 function ItemCard({ item, onItemClick, onDelete, onEdit }) {
@@ -36,12 +37,18 @@ function ItemCard({ item, onItemClick, onDelete, onEdit }) {
         )}
       </div>
 
-      <img
-        className="item-card__image"
-        src={item.imageUrl}
-        alt={item.name}
+      <button
+        className="item-card__image-button"
+        type="button"
         onClick={() => onItemClick(item)}
-      />
+        aria-label={"View " + item.name}
+      >
+        <img
+          className="item-card__image"
+          src={item.imageUrl}
+          alt={item.name}
+        />
+      </button>
     </li>
   );
 }

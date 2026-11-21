@@ -31,9 +31,10 @@ function App() {
       .then((data) => {
         setWeather(data);
       })
-      .catch(() => {
-        setError("Unable to load weather data.");
-      });
+      .catch((err) => {
+  console.error("Weather request failed:", err);
+  setError("Unable to load weather data.");
+});
   }, []);
 
   useEffect(() => {
